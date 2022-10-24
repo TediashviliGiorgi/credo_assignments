@@ -8,10 +8,7 @@ namespace calculator
         {
             do
             {
-                string header = "Hello";
-                Console.WriteLine = (header);
                 //number validations---------------
-
                 Console.WriteLine("Enter first number: ");
                 var firstNumber = Console.ReadLine();
                 bool isFirstNumberNumeric = double.TryParse(firstNumber, out _);
