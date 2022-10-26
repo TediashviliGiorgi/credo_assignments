@@ -35,7 +35,7 @@
             Console.WriteLine(ToBinary(2));
             Console.WriteLine(ToBinary(256));
             Console.WriteLine(ToBinary(33)); 
-            
+            Console.WriteLine(ToBinary(999)); 
         }
     }
 }
