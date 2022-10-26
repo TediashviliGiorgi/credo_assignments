@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            // first way -----------------
+            // first way ----------------
 
             //string ToBinary(long number)
             //{
@@ -13,9 +13,9 @@
             //    return binary;
             //}
 
-            //----------------------------
+            //---------------------------
 
-            // second way ----------------
+            // second way ---------------
             
             string ToBinary(long number)
             {
@@ -30,12 +30,12 @@
                 return result;
             }
     
-            //----------------------------
+            //---------------------------
 
             Console.WriteLine(ToBinary(2));
             Console.WriteLine(ToBinary(256));
             Console.WriteLine(ToBinary(33)); 
-            Console.WriteLine(ToBinary(999)); 
+            
         }
     }
 }
