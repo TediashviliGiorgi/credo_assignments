@@ -23,7 +23,6 @@
             }
             Console.WriteLine("Please enter position");
             int n = Convert.ToInt32(Console.ReadLine());
-            n = n - 1;
             Console.WriteLine(Fib(n));
         }
     }
