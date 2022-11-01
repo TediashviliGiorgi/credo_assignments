@@ -166,7 +166,7 @@ class Program
                     Console.WriteLine("Draw!");
                 }else
                 {
-                    Console.WriteLine("5");
+                    Console.WriteLine();
                 }
                 //------------------------------------------------------------------
             }
