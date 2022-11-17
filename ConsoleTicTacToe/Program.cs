@@ -13,7 +13,6 @@ class Program
                 new char[] { 'G', 'H', 'I', }
           };
 
-
     public static char GetCorrectSimbolAccordingPlayer(int currentPlayer)
     {
         // get X or 0
@@ -74,7 +73,6 @@ class Program
         }
     }
 
-    //
     public static void BoardState(int coordinateX, int coordinateY)
     {
         Console.Clear();
@@ -118,8 +116,6 @@ class Program
         Console.WriteLine("     |     |      ");
         //--------------------------------------------------------------------
     }
-
-
 
     static void Main(string[] args)
     {
@@ -176,9 +172,7 @@ class Program
                 Console.WriteLine("Please set correct coordinates and use space between them");
                 continue;
             }
-
         } while (gameFlow == true);
-
     }
 }
 
