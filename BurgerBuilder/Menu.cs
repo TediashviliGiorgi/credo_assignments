@@ -11,7 +11,7 @@ namespace BurgerBuilder
         {
             var burgerBuilder = new BurgerBuilder();
             var burger = burgerBuilder
-                //default ingredients
+                //default ingredients and start building
                 .Start()
                 .WithBun()
                 .WithLettuce();
@@ -136,7 +136,7 @@ namespace BurgerBuilder
         public void LogBurger(BurgerBuilder burger)
         {
             Console.WriteLine("============================================(0_-)");
-            Console.WriteLine("your combination is: ");
+            Console.WriteLine("Required combination is: ");
             burger.Build();
         }
 
