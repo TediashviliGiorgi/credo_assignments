@@ -18,13 +18,13 @@ namespace WordAnalizer
         {
             string[] words = ReadFile();
             string shortestWord = words[0];
-            Parallel.ForEach (words, i =>
+            foreach (string i in words)
             {
                 if (i.Length < words[0].Length)
                 {
                     shortestWord = i;
                 }
-            })
+            }
             Console.WriteLine(shortestWord);
         }
         //---------------------------------------------------
@@ -33,13 +33,13 @@ namespace WordAnalizer
         {
             string[] words = ReadFile();
             string largestWord = words[0];
-            Parallel.ForEach(words, i =>
+            foreach (string i in words)
             {
                 if (i.Length > words[0].Length)
                 {
                     largestWord = i;
                 }
-            });
+            }
             Console.WriteLine(largestWord);
         }
 
