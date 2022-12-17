@@ -1,9 +1,5 @@
 ﻿namespace BranchSums
 {
-    using System;
-using System.Collections.Generic;
-
-
 public class BinaryTreeNode
 {
     public int Data { get; set; }
