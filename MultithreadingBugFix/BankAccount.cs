@@ -1,4 +1,4 @@
-namespace Assignments.Multithreading;
+namespace Assignments.MultithreadingBugFix;
 
 public class BankAccount
 {

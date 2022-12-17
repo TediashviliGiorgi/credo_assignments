@@ -1,15 +1,19 @@
-namespace Assignments.Multithreading;
+namespace Assignments.MultithreadingBugFix;
 
 public class TransactionService
 {
+    private static object _lockObject = new object();
     public void Transfer(BankAccount fromAccount, BankAccount toAccount, decimal amount)
     {
-        if (amount > fromAccount.Balance)
+        lock (_lockObject)
         {
-            Console.WriteLine($"{fromAccount.Iban} has Insufficient funds");
-            return;
+            if (amount > fromAccount.Balance)
+            {
+                Console.WriteLine($"{fromAccount.Iban} has Insufficient funds");
+                return;
+            }
+            fromAccount.Balance -= amount;
+            toAccount.Balance += amount;
         }
-        fromAccount.Balance -= amount;
-        toAccount.Balance += amount;
     }
 }

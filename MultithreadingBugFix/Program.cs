@@ -1,5 +1,4 @@
-﻿
-namespace Assignments.Multithreading;
+﻿namespace Assignments.MultithreadingBugFix;
 
 public class Program
 {
@@ -7,15 +6,15 @@ public class Program
     private static BankAccount account2;
     public static void Main()
     {
-        account1 = new BankAccount { Iban = "111",  Balance = 1000000 };
+        account1 = new BankAccount { Iban = "111", Balance = 1000000 };
         account2 = new BankAccount { Iban = "222", Balance = 0 };
 
         var transferService = new TransactionService();
-        
+
         var tasks = new List<Task>();
         var amountToTransfer = 10000;
-        
-        for(var i = 0; i < 101; i ++)
+
+        for (var i = 0; i < 101; i++)
         {
             var task = Task.Run(() =>
             {
@@ -24,7 +23,7 @@ public class Program
             tasks.Add(task);
         }
         Task.WaitAll(tasks.ToArray());
-        
+
         ValidateResults();
     }
 
