@@ -31,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordAnalizer", "WordAnalize
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultithreadingBugFix", "MultithreadingBugFix\MultithreadingBugFix.csproj", "{E4814CA8-BC55-4549-A5F6-DB3FA3BB1E67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchSums", "BranchSums\BranchSums.csproj", "{32A30B08-2CAC-4DC4-A9FC-3BAAFC4CA95B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BranchSums", "BranchSums\BranchSums.csproj", "{32A30B08-2CAC-4DC4-A9FC-3BAAFC4CA95B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveElementToEnd", "MoveElementToEnd\MoveElementToEnd.csproj", "{1E103450-B71D-46DF-A777-3999FA343187}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveElementToEnd", "MoveElementToEnd\MoveElementToEnd.csproj", "{1E103450-B71D-46DF-A777-3999FA343187}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_TASK_18_19_20", "SQL_TASK_18_19_20\SQL_TASK_18_19_20.csproj", "{BAB7F044-6B06-492B-9649-957E54D0109F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{1E103450-B71D-46DF-A777-3999FA343187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E103450-B71D-46DF-A777-3999FA343187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E103450-B71D-46DF-A777-3999FA343187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB7F044-6B06-492B-9649-957E54D0109F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB7F044-6B06-492B-9649-957E54D0109F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB7F044-6B06-492B-9649-957E54D0109F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB7F044-6B06-492B-9649-957E54D0109F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
