@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveElementToEnd", "MoveEle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL_TASK_18_19_20", "SQL_TASK_18_19_20\SQL_TASK_18_19_20.csproj", "{BAB7F044-6B06-492B-9649-957E54D0109F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.API", "TodoApp.API\TodoApp.API.csproj", "{D0746920-A8F1-4812-A051-B1952D7B391D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.API", "TodoApp.API\TodoApp.API.csproj", "{A309395C-5533-4D1A-A2F9-4D22FED56A4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,10 +113,10 @@ Global
 		{BAB7F044-6B06-492B-9649-957E54D0109F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAB7F044-6B06-492B-9649-957E54D0109F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAB7F044-6B06-492B-9649-957E54D0109F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0746920-A8F1-4812-A051-B1952D7B391D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0746920-A8F1-4812-A051-B1952D7B391D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0746920-A8F1-4812-A051-B1952D7B391D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0746920-A8F1-4812-A051-B1952D7B391D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A309395C-5533-4D1A-A2F9-4D22FED56A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A309395C-5533-4D1A-A2F9-4D22FED56A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A309395C-5533-4D1A-A2F9-4D22FED56A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A309395C-5533-4D1A-A2F9-4D22FED56A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
