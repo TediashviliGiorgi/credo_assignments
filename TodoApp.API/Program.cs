@@ -1,5 +1,7 @@
-using Microsoft.IdentityModel.Logging;
+
+using Microsoft.EntityFrameworkCore;
 using TodoApp.API.Auth;
+using TodoApp.API.Db;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,14 @@ builder.Services.AddSwaggerGen();
 
 AuthConfigurator.Configure(builder);
 
+builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("TodoAppDb")));
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    using var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
