@@ -1,9 +1,12 @@
 ﻿
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
+using TodoApp.API.DB;
+using TodoApp.API.DB.Entities;
 
 namespace TodoApp.API.Auth
 {
@@ -49,6 +52,18 @@ namespace TodoApp.API.Auth
 
                 options.AddPolicy("ApiAdmin", policy => policy.RequireClaim(ClaimTypes.Role, "api-admin"));
             });
+
+            builder.Services
+                .AddIdentity<UserEntity, RoleEntity>(o =>
+                {
+                    o.Password.RequireDigit = false;
+                    o.Password.RequireLowercase = false;
+                    o.Password.RequireUppercase = false;
+                    o.Password.RequireNonAlphanumeric = false;
+                    o.Password.RequiredLength = 6;
+                })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
         }
     }
 }

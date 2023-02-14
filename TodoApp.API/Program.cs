@@ -1,4 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using TodoApp.API.Auth;
+using TodoApp.API.DB;
+using TodoApp.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +12,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<AppDbContext>
+    (x => x.UseSqlServer(builder.Configuration.GetConnectionString("AppToDB")));
+
 AuthConfigurator.Configure(builder);
 
-var app = builder.Build();
+builder.Services.AddTransient<ISendEmailRequestRepository, SendEmailRequestRepository>();
+builder.Services.AddTransient<ITodoRepository, TodoRepository>();
+var app = builder.Build(); 
+
+using (var scope = app.Services.CreateScope())
+{
+    using var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
