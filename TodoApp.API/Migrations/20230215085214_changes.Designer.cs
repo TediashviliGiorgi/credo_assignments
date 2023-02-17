@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoApp.API.DB;
 
@@ -11,9 +12,11 @@ using TodoApp.API.DB;
 namespace TodoApp.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230215085214_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,17 +210,12 @@ namespace TodoApp.API.Migrations
                     b.Property<int>("TodoStatus")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserEntityId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserEntityId");
-
-                    b.ToTable("Todos", (string)null);
+                    b.ToTable("Todos");
                 });
 
             modelBuilder.Entity("TodoApp.API.DB.Entities.UserEntity", b =>
@@ -273,18 +271,6 @@ namespace TodoApp.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("TodoApp.API.DB.Entities.TodoEntity", b =>
-                {
-                    b.HasOne("TodoApp.API.DB.Entities.UserEntity", null)
-                        .WithMany("Todos")
-                        .HasForeignKey("UserEntityId");
-                });
-
-            modelBuilder.Entity("TodoApp.API.DB.Entities.UserEntity", b =>
-                {
-                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

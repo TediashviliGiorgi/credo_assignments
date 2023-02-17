@@ -12,10 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+AuthConfigurator.Configure(builder);
+
 builder.Services.AddDbContext<AppDbContext>
     (x => x.UseSqlServer(builder.Configuration.GetConnectionString("AppToDB")));
 
-AuthConfigurator.Configure(builder);
+
 
 builder.Services.AddTransient<ISendEmailRequestRepository, SendEmailRequestRepository>();
 builder.Services.AddTransient<ITodoRepository, TodoRepository>();

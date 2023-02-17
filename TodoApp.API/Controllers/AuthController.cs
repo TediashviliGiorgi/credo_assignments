@@ -64,7 +64,7 @@ namespace TodoApp.API.Controllers
                 return BadRequest("Invalid email or password");
             }
 
-            return Ok(_tokenGenerator.Generate(request.Email));
+            return Ok(_tokenGenerator.Generate(user.Id.ToString()));
         }
         
         [HttpPost("request-password-reset")]

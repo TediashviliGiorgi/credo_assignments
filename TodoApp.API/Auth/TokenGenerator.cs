@@ -15,16 +15,17 @@ namespace TodoApp.API.Auth
         {
             _settings = settings.Value;   
         }
-        public string Generate(string email)
+        public string Generate(string userId)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, userId),
                 new Claim(ClaimTypes.Role, "api-user"),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.SecretKey));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            
             var token = new JwtSecurityToken(
             issuer: _settings.Issuer,
                 audience: _settings.Audience,
