@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 using TodoApp.API.DB.Entities;
 using TodoApp.API.Models.Requests;
 using TodoApp.API.Repositories;
@@ -27,7 +26,7 @@ namespace TodoApp.API.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateTodoRequest request)
         {
-            var user = _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
             
             if (user == null)
             {
@@ -56,7 +55,55 @@ namespace TodoApp.API.Controllers
             return Ok(todos);
         }
 
-        // update - update todo title, description and deadline
-        // change-status - Change todo status
+
+        [Authorize("ApiUser", AuthenticationSchemes = "Bearer")]
+        [HttpPost("search")]
+        public async Task<IActionResult> GetBySearch([FromBody] SearchTodoRequest request) 
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            var filtredTodos = await _todoRepository.SearchAsync(userId,  request);
+            return Ok(filtredTodos);
+        }
+
+        [Authorize("ApiUser", AuthenticationSchemes = "Bearer")]
+        [HttpPatch("update-by-id")]
+        public async Task<IActionResult> Update([FromBody]UpdateTodoRequest request)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+            if(user == null)
+            {
+                return NotFound();
+            }
+            await _todoRepository.UpdateTodoAsync(userId, request);
+            await _todoRepository.SaveChangesAsync();
+            return Ok();
+        }
+
+        [Authorize("ApiUser", AuthenticationSchemes = "Bearer")]
+        [HttpPost("UpdateToDoStatus")]
+        public async Task<IActionResult> ChangeToDoStatus(UpdateTodoStatusRequest request)
+        {
+            var user = _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            await _todoRepository.ChangeTodoStatus(request);
+            await _todoRepository.SaveChangesAsync();
+            return Ok();
+        }
+
+        // [Authorize("ApiUser", AuthenticationSchemes = "Bearer")]
+        //[HttpPost("change-status-by-id")]
+
     }
 }

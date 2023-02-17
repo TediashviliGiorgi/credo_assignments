@@ -42,15 +42,20 @@ namespace TodoApp.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Todos",
+                name: "SendEmailRequests",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ToAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SendEmailRequestStatus = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SentAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Todos", x => x.Id);
+                    table.PrimaryKey("PK_SendEmailRequests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,7 +102,7 @@ namespace TodoApp.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -119,7 +124,7 @@ namespace TodoApp.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,6 +141,35 @@ namespace TodoApp.API.Migrations
                 {
                     table.PrimaryKey("PK_UserTokens", x => x.UserId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Todos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TodoStatus = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Todos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Todos_users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Todos_UserId",
+                table: "Todos",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -146,6 +180,9 @@ namespace TodoApp.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "SendEmailRequests");
 
             migrationBuilder.DropTable(
                 name: "Todos");
@@ -160,10 +197,10 @@ namespace TodoApp.API.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "UserTokens");
+                name: "users");
         }
     }
 }

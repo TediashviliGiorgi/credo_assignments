@@ -207,15 +207,12 @@ namespace TodoApp.API.Migrations
                     b.Property<int>("TodoStatus")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserEntityId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserEntityId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Todos", (string)null);
                 });
@@ -272,14 +269,16 @@ namespace TodoApp.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("TodoApp.API.DB.Entities.TodoEntity", b =>
                 {
                     b.HasOne("TodoApp.API.DB.Entities.UserEntity", null)
                         .WithMany("Todos")
-                        .HasForeignKey("UserEntityId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TodoApp.API.DB.Entities.UserEntity", b =>

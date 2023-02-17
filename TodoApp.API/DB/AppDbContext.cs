@@ -16,11 +16,10 @@ namespace TodoApp.API.DB
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<UserEntity>().ToTable("Users")
-                .HasMany(d => d.Todos)
-                .WithOne(e => e.Id)
-                .HasForeignKey(e => e.UserId)
-               
+            builder.Entity<UserEntity>().ToTable("users")
+            .HasMany(d => d.Todos)
+            .WithOne()
+            .HasForeignKey(e => e.UserId);
             builder.Entity<TodoEntity>().ToTable("Todos");
             builder.Entity<RoleEntity>().ToTable("Roles");
             builder.Entity<IdentityUserRole<int>>().ToTable("UserRoles").HasKey(p => p.UserId);
@@ -28,10 +27,6 @@ namespace TodoApp.API.DB
             builder.Entity<IdentityUserClaim<int>>().ToTable("UserClaims");
             builder.Entity<IdentityUserLogin<int>>().ToTable("UserLogins").HasKey(p => p.UserId);
             builder.Entity<IdentityUserToken<int>>().ToTable("UserTokens").HasKey(p => p.UserId);
-
-
-
-
 
         }
     }

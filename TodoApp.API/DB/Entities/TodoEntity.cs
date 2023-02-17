@@ -2,9 +2,9 @@
 {
     public enum TodoStatus
     {
-        New,
-        Done,
-        Canceled
+        New = 1,
+        Done = 2,
+        Canceled =3
     }
 
     public class TodoEntity

@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoveElementToEnd", "MoveEle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL_TASK_18_19_20", "SQL_TASK_18_19_20\SQL_TASK_18_19_20.csproj", "{BAB7F044-6B06-492B-9649-957E54D0109F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.API", "TodoApp.API\TodoApp.API.csproj", "{945BEDD3-58ED-4ED8-9270-A56ED6083E63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.API", "TodoApp.API\TodoApp.API.csproj", "{945BEDD3-58ED-4ED8-9270-A56ED6083E63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

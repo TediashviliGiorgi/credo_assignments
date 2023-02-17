@@ -1,6 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using TodoApp.API.DB;
 using TodoApp.API.DB.Entities;
+using TodoApp.API.Models.Requests;
 
 namespace TodoApp.API.Repositories
 {
@@ -9,7 +13,12 @@ namespace TodoApp.API.Repositories
         Task InsertAsync(int userId, string title, string description, DateTime deadline);
         Task SaveChangesAsync();
 
-        Task <List<TodoEntity>> GetTodosByDeadlineAsync(int userId);
+        Task<List<TodoEntity>> SearchAsync(int userId, SearchTodoRequest request);
+
+        Task<List<TodoEntity>> GetTodosByDeadlineAsync(int userId);
+        Task UpdateTodoAsync(int userId, UpdateTodoRequest request);
+
+        Task ChangeTodoStatus(UpdateTodoStatusRequest request);
     }
 
     public class TodoRepository : ITodoRepository
@@ -24,38 +33,65 @@ namespace TodoApp.API.Repositories
         public async Task InsertAsync(int userId, string title, string description, DateTime deadline)
         {
             var entity = new TodoEntity();
-            entity.UserId = userId; 
+            entity.UserId = userId;
             entity.Title = title;
             entity.Description = description;
             entity.Deadline = deadline;
             entity.TodoStatus = entity.TodoStatus;
             entity.CreatedAt = DateTime.UtcNow;
-        
+
             await _db.Todos.AddAsync(entity);
         }
 
-        //public List<TodoEntity> Search(string filter, int pageSize, int pageIndex) 
-        //{
-        //    var allTodos = _db.Todos
-        //        .Where(t => t.UserId == 1)
-        //        .Where(t => t.Title == filter)
-        //        .Skip(pageIndex * pageSize)
-        //        .Take(pageSize)
-        //        .OrderBy(t => t.CreatedAt)
-        //        .ToList();
-
-        //    return allTodos;
-        //}
-
-        public async Task <List<TodoEntity>> GetTodosByDeadlineAsync(int userId)
+        public async Task<List<TodoEntity>> SearchAsync(int userId, SearchTodoRequest request)
         {
-            var todos = await _db.Todos
-                .OrderBy(t => t.Deadline)
+            var filtredTodos = await _db.Todos
+                .Where(t => t.UserId == userId)
+                .Where(t => t.Title == request.Filter || t.Description == request.Filter) 
+                //.Skip(request.PageIndex * request.PageSize)
+                //.Take(request.PageSize)
+                .OrderBy(t => t.CreatedAt)
                 .ToListAsync();
-            return  todos;
-           
+
+            return filtredTodos;
         }
 
+        public async Task UpdateTodoAsync(int userId, UpdateTodoRequest request)
+        {
+            var choisedTodo = await _db.Todos.FindAsync(request.TodoId);
+            
+            if (!string.IsNullOrEmpty(request.Title))
+            {
+                choisedTodo.Title = request.Title;
+            }
+
+            if (!string.IsNullOrEmpty(request.Description))
+            {
+                choisedTodo.Description = request.Description;
+            }
+
+            if (request.Deadline != null)
+            {
+                choisedTodo.Deadline = request.Deadline;
+            }
+        }
+
+        public async Task<List<TodoEntity>> GetTodosByDeadlineAsync(int userId)
+        {
+            var todos = await _db.Todos
+                .Where(u => u.UserId == userId)
+                .OrderBy(t => t.Deadline)
+                .ToListAsync();
+            return todos;
+
+        }
+
+        public async Task ChangeTodoStatus(UpdateTodoStatusRequest request)
+        {
+            var choisedTodo = await _db.Todos.FindAsync(request.TodoId);
+
+            choisedTodo.TodoStatus = request.TodoStatus;
+        }
 
         public async Task SaveChangesAsync()
         {
