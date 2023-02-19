@@ -87,7 +87,7 @@ namespace TodoApp.API.Controllers
         }
 
         [Authorize("ApiUser", AuthenticationSchemes = "Bearer")]
-        [HttpPost("UpdateToDoStatus")]
+        [HttpPost("change-todo-status")]
         public async Task<IActionResult> ChangeToDoStatus(UpdateTodoStatusRequest request)
         {
             var user = _userManager.GetUserAsync(User);

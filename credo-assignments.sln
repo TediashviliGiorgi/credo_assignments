@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL_TASK_18_19_20", "SQL_TA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.API", "TodoApp.API\TodoApp.API.csproj", "{945BEDD3-58ED-4ED8-9270-A56ED6083E63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDatabase.API", "MovieDatabase.API\MovieDatabase.API.csproj", "{821DF5A7-94D6-4119-8E8A-78A551470B04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{945BEDD3-58ED-4ED8-9270-A56ED6083E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{945BEDD3-58ED-4ED8-9270-A56ED6083E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{945BEDD3-58ED-4ED8-9270-A56ED6083E63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{821DF5A7-94D6-4119-8E8A-78A551470B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{821DF5A7-94D6-4119-8E8A-78A551470B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{821DF5A7-94D6-4119-8E8A-78A551470B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{821DF5A7-94D6-4119-8E8A-78A551470B04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
