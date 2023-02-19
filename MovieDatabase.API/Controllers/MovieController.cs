@@ -26,6 +26,11 @@ namespace MovieDatabase.API.Controllers
            
             await _movieRepository.AddMovieAsync(request);
             await _movieRepository.SaveChangesAsync();
+            var date = new DateTime(1895, 1, 1);
+            if (request.Release < date)
+            {
+                return NotFound();
+            }
 
             return Ok();
         }
