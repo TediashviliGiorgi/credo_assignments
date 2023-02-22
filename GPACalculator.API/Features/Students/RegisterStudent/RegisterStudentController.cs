@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GPACalculator.API.Features.Students.RegisterStudent
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/student/[controller]")]
     [ApiController]
     public class RegisterStudentController : ControllerBase
     {

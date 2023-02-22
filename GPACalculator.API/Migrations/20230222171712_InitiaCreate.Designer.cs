@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GPACalculator.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230220171414_add-migraton changeColumns")]
-    partial class addmigratonchangeColumns
+    [Migration("20230222171712_InitiaCreate")]
+    partial class InitiaCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

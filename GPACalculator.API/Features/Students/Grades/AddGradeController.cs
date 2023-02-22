@@ -2,7 +2,7 @@
 
 namespace GPACalculator.API.Features.Students.Grades
 {
-    [Route("api/v1/student/grade")]
+    [Route("api/v1/student/add-grade")]
     [ApiController]
     public class AddGradeController : ControllerBase
     {
