@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GPACalculator.API.DB.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GPACalculator.API.Features.Students.CalculateGPA
 {
@@ -18,7 +19,9 @@ namespace GPACalculator.API.Features.Students.CalculateGPA
             var studentGrades = await _calculatrGpaRepository.GetStudentGradesAsync(studentId);
             var calculator = new GPACalculator();
             var gpa = calculator.Calculate(studentGrades);
+            await _calculatrGpaRepository.SaveGPAs(studentId, gpa);
 
+            
             return Ok(gpa);
         }
     }

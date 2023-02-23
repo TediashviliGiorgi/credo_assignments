@@ -21,6 +21,25 @@ namespace GPACalculator.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("GPACalculator.API.DB.Entities.GPAEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("GPA")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GPAs");
+                });
+
             modelBuilder.Entity("GPACalculator.API.DB.Entities.GradeEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -62,6 +81,9 @@ namespace GPACalculator.API.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("GPA")
+                        .HasColumnType("float");
 
                     b.Property<string>("LastName")
                         .IsRequired()

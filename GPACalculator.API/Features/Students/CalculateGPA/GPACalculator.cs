@@ -15,6 +15,7 @@
                 var gp = CalculateGp(studentGrade.Score);
                 gpaCredits += gp * studentGrade.SubjectCredits;
             }
+            
             return gpaCredits / totalCredits;
         }
 
@@ -27,5 +28,7 @@
             if (score <= 90) return 3.0;
             return 4.0;
         }
+
+        
     }
 }

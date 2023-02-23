@@ -1,5 +1,6 @@
 using GPACalculator.API.DB;
 using GPACalculator.API.Features.Students.CalculateGPA;
+using GPACalculator.API.Features.Students.GetStat;
 using GPACalculator.API.Features.Students.Grades;
 using GPACalculator.API.Features.Students.RegisterStudent;
 using GPACalculator.API.Features.Subjects;
@@ -19,6 +20,7 @@ builder.Services.AddTransient<CreateSubjectValidation>();
 builder.Services.AddTransient<RegisterStudentValidation>();
 builder.Services.AddTransient<AddGradeValidation>();
 
+builder.Services.AddTransient<IGetStatRepository, GetStatRepository>();
 builder.Services.AddTransient<IAddGradeRepository, AddGradeRepository>();
 builder.Services.AddTransient<ICalculateGpaRepository, CalculateGpaRepository>();
 builder.Services.AddTransient<ICreateSubjectRepository, CreateSubjectRepository>();

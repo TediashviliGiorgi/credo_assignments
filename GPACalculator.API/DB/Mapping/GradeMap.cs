@@ -13,6 +13,8 @@ namespace GPACalculator.API.DB.Mapping
                 .HasOne(t => t.Student)
                 .WithMany()
                 .HasForeignKey(t => t.StudentId);
+                
+            
             builder
                 .HasOne(t => t.Subject)
                 .WithMany()
