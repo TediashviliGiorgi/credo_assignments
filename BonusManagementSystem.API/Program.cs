@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("AppToDb")));
-
+builder.Services.AddTransient<IEmployeeRepsoitory, EmployeeRepository>();
 
 var app = builder.Build();
 

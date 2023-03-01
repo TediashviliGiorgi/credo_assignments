@@ -43,9 +43,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabase.API", "MovieD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GPACalculator.API", "GPACalculator.API\GPACalculator.API.csproj", "{31B068C3-5C09-4790-9574-CC2E1216D00A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GpaCalculatorTests", "GpaCalculatorTests\GpaCalculatorTests.csproj", "{9003E2B9-0729-49BA-A65C-F802E38B12B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GpaCalculatorTests", "GpaCalculatorTests\GpaCalculatorTests.csproj", "{9003E2B9-0729-49BA-A65C-F802E38B12B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BonusManagementSystem.API", "BonusManagementSystem.API\BonusManagementSystem.API.csproj", "{E92E507D-1D1F-4D3F-AB20-B8D2905BF87A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonusManagementSystem.API", "BonusManagementSystem.API\BonusManagementSystem.API.csproj", "{E92E507D-1D1F-4D3F-AB20-B8D2905BF87A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssFeedFetcherWorkerService", "RssFeedFetcherWorkerService\RssFeedFetcherWorkerService.csproj", "{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,10 @@ Global
 		{E92E507D-1D1F-4D3F-AB20-B8D2905BF87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E92E507D-1D1F-4D3F-AB20-B8D2905BF87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E92E507D-1D1F-4D3F-AB20-B8D2905BF87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
