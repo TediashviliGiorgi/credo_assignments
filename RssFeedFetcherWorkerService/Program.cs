@@ -23,7 +23,7 @@ namespace RssFeedFetcherWorkerService
                  "https://www.tabsoverspaces.com/feed.xml"
          };
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             optionsBuilder.UseSqlServer("Data Source=localhost; Database=RssFeedsDB; TrustServerCertificate=True; Trusted_Connection=True");
@@ -32,13 +32,15 @@ namespace RssFeedFetcherWorkerService
 
             db.Database.EnsureCreated();
 
-            while (true)
-            {
-                var watch = new WatchFeeds();
-                watch.RunWatch(urls);
+            
+                var watch = new WatchFeeds(db);
+           
+                await watch.RunWatch(urls);
+            
+                
 
-                Thread.Sleep(1000 * 60);
-            }
+                
+            
         }
     }
 }
