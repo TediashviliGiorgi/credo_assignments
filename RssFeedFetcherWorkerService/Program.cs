@@ -12,7 +12,6 @@ namespace RssFeedFetcherWorkerService
                  "https://stackoverflow.blog/feed/",
                  "https://dev.to/feed",
                  "https://www.freecodecamp.org/news/rss",
-                 "https://martinfowler.com/feed.atom",
                  "https://codeblog.jonskeet.uk/feed/",
                  "https://devblogs.microsoft.com/visualstudio/feed/",
                  "https://feed.infoq.com/",
@@ -20,7 +19,6 @@ namespace RssFeedFetcherWorkerService
                  "https://codeopinion.com/feed/",
                  "https://andrewlock.net/rss.xml",
                  "https://michaelscodingspot.com/index.xml",
-                 "https://www.tabsoverspaces.com/feed.xml"
          };
 
         static async Task Main(string[] args)
@@ -32,15 +30,14 @@ namespace RssFeedFetcherWorkerService
 
             db.Database.EnsureCreated();
 
-            
                 var watch = new WatchFeeds(db);
-           
-                await watch.RunWatch(urls);
-            
-                
+            while (true)
+            {
+                await watch.MakeUniqueListAndSaveToAsync(urls);
 
-                
-            
+                Console.WriteLine($"Last Updated At: {DateTime.Now}");
+                Thread.Sleep(1000*60);
+            }
         }
     }
 }
