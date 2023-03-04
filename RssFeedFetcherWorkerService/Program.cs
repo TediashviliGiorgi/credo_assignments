@@ -33,9 +33,8 @@ namespace RssFeedFetcherWorkerService
                 var watch = new WatchFeeds(db);
             while (true)
             {
-                await watch.MakeUniqueListAndSaveToAsync(urls);
+                await watch.MakeUniqueListAndSaveAsync(urls);
 
-                Console.WriteLine($"Last Updated At: {DateTime.Now}");
                 Thread.Sleep(1000*60);
             }
         }

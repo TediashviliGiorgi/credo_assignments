@@ -77,17 +77,18 @@ namespace RssFeedFetcherWorkerService.Watcher
             return SyndicationFeed.Load(reader);
         }
 
-        public async Task MakeUniqueListAndSaveToAsync(string[] urls)
+        public async Task MakeUniqueListAndSaveAsync(string[] urls)
         {
             var feedsFromDb = await _db.Feeds.ToListAsync();
-            //get unique list for saving to db
             var newFeedsList = await ParseXML(urls);
             var outputList = newFeedsList.Union(feedsFromDb).ToList();
             var uniqList = outputList.DistinctBy(i => i.Title).ToList();
 
             await _db.Feeds.AddRangeAsync(uniqList);
-            Console.WriteLine($"We added {uniqList.Count} feeds from our DB");  
             await _db.SaveChangesAsync();
+
+            Console.WriteLine($"We added {uniqList.Count} feeds from our DB");
+            Console.WriteLine($"Updated At: {DateTime.UtcNow}");
         }
     }
 }

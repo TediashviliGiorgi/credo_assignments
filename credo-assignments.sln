@@ -49,6 +49,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonusManagementSystem.API",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssFeedFetcherWorkerService", "RssFeedFetcherWorkerService\RssFeedFetcherWorkerService.csproj", "{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssFeed.API", "RssFeed.API\RssFeed.API.csproj", "{0A17B9A7-1E70-46DD-9C67-F7AA67B45E07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,10 @@ Global
 		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBB14953-E4B4-415B-90E3-22BDD4CB6AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A17B9A7-1E70-46DD-9C67-F7AA67B45E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A17B9A7-1E70-46DD-9C67-F7AA67B45E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A17B9A7-1E70-46DD-9C67-F7AA67B45E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A17B9A7-1E70-46DD-9C67-F7AA67B45E07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
